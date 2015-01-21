@@ -23,7 +23,7 @@
     [self.tableView reloadData];
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Bg"]];
+    NSLog(@"%f",self.view.frame.size.height);
     
     
     self.tabBarItem.selectedImage = [[UIImage imageNamed:@"Chat"]
@@ -31,15 +31,26 @@
     
     self.tabBarItem.image = [[UIImage imageNamed:@"Chat"]
                              imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
    
 }
 -(void)viewDidAppear:(BOOL)animated{
+    
     [self.tableView reloadData];
     [self viewDidLoad];
     
+    if (self.view.frame.size.height == 603) {
+        
+        
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg6"]];
+        
+    }else{
+        
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Bg"]];}
+    
 
-        [[UIView appearanceWhenContainedIn:[UITabBar class], nil] setTintColor:[UIColor whiteColor]];
-        [[UITabBar appearance] setSelectedImageTintColor:[UIColor blackColor]];
+//        [[UIView appearanceWhenContainedIn:[UITabBar class], nil] setTintColor:[UIColor whiteColor]];
+//        [[UITabBar appearance] setSelectedImageTintColor:[UIColor blackColor]];
     
 
 }
@@ -73,7 +84,7 @@
     self.tableView.separatorColor = [UIColor clearColor];
     
    
-   cell.separatorInset = UIEdgeInsetsZero;
+  // cell.separatorInset = UIEdgeInsetsZero;
     
     
     if (cell == nil)

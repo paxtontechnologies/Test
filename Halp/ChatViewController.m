@@ -237,8 +237,8 @@
         self.typingview.frame = CGRectMake(self.tableview.frame.origin.x, 180,self.typingview.frame.size.width, self.typingview.frame.size.height);
     }else{
         // for IPHONE 5/5S
-    self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, 0, self.view.frame.size.width, 289);
-        self.typingview.frame = CGRectMake(self.tableview.frame.origin.x, 233,self.typingview.frame.size.width, self.typingview.frame.size.height);
+    self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, 0, self.view.frame.size.width, 261);
+        self.typingview.frame = CGRectMake(self.tableview.frame.origin.x, 205,self.typingview.frame.size.width, self.typingview.frame.size.height);
     [self tableViewScrollToBottomAnimated];}
     NSLog(@"%f",self.typingview.frame.origin.y);
     
@@ -418,8 +418,8 @@
 
     }else{
         number =  number * 8.153848;}
-    if (number > 319) {
-        self.width = 319;
+    if (number > 290) {
+        self.width = 290;
     }else{
         self.width = number;}
 }

@@ -161,7 +161,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="sGn-Fb-6xr"/>
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="modal" identifier="login" modalTransitionStyle="crossDissolve" id="cmW-yL-Lvy"/>
-                        <segue destination="mjp-4u-PyP" kind="modal" identifier="login2" id="n4n-vT-TC0"/>
+                        <segue destination="mjp-4u-PyP" kind="modal" identifier="login2" modalTransitionStyle="crossDissolve" id="n4n-vT-TC0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4BI-ge-J9N" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -220,27 +220,6 @@
                                 <rect key="frame" x="0.0" y="263" width="320" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="Jl9-PG-r6t">
-                                        <rect key="frame" x="8" y="6" width="28" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="76T-qn-I73" id="Xc6-Fz-bIt"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="NuY-Ox-lHt">
-                                        <rect key="frame" x="18" y="6" width="240" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="typing:" destination="76T-qn-I73" eventType="editingDidBegin" id="2Zl-vw-eEP"/>
-                                            <outlet property="delegate" destination="76T-qn-I73" id="idm-fW-u6C"/>
-                                        </connections>
-                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="baA-Ix-KeP">
                                         <rect key="frame" x="272" y="2" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -254,6 +233,17 @@
                                             <action selector="Send:" destination="76T-qn-I73" eventType="touchUpInside" id="sed-85-pfc"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="NuY-Ox-lHt">
+                                        <rect key="frame" x="8" y="6" width="256" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="typing:" destination="76T-qn-I73" eventType="editingDidBegin" id="2Zl-vw-eEP"/>
+                                            <outlet property="delegate" destination="76T-qn-I73" id="idm-fW-u6C"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -518,7 +508,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="rYb-A7-Je4"/>
         <segue reference="1jA-Lr-z4Z"/>
+        <segue reference="rYb-A7-Je4"/>
     </inferredMetricsTieBreakers>
 </document>
