@@ -36,7 +36,7 @@
    //sets up for clicking the different categories
      [self setuparray];
     
-        
+   
     
 }
 
@@ -83,8 +83,7 @@
     UIButton *circle = [[UIButton alloc]initWithFrame:CGRectMake(100, 50, 80, 80)];
     circle.layer.cornerRadius = circle.frame.size.height /2;
     //circle.layer.masksToBounds = YES;
-    circle.layer.borderWidth = 3;
-    circle.layer.borderColor = (__bridge CGColorRef)([UIColor blackColor]);
+   
     [cell.contentView addSubview:circle];
 
     
@@ -132,7 +131,7 @@
 
    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.imageView.layer.cornerRadius = cell.imageView.frame.size.height /2;
-    cell.imageView.layer.borderWidth = 5;
+    
     
     
     
@@ -255,12 +254,33 @@
 -(void)changelayout{
     
     if (self.view.bounds.size.height == 480) {
-        self.buttonView.center = CGPointMake(self.buttonView.center.x, 118.25);
-        self.tableview.center = CGPointMake(self.tableview.center.x, self.tableview.center.y - 40);
-        self.lookingText.center = CGPointMake(self.lookingText.center.x, self.lookingText.center.y - 40);
-        self.nextButton.center = CGPointMake(self.nextButton.center.x, self.nextButton.center.y - 40);
+        self.totalview.center = CGPointMake(self.view.frame.size.width /2, self.view.frame.size.height/3.1);
+self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, self.tableview.frame.origin.y , self.view.frame.size.width, 200);
+        
         
     }
+    
+    if (self.view.frame.size.width == 414) {
+        //6 plus
+        self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, self.tableview.frame.origin.y, self.view.frame.size.width, 496);
+        self.totalview.center = CGPointMake(self.view.frame.size.width /2, self.view.frame.size.height/4);
+
+        
+    }
+    
+    if (self.view.frame.size.width == 375) {
+        //iphone 6
+        self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, self.tableview.frame.origin.y, self.view.frame.size.width, 427);
+        self.totalview.center = CGPointMake(self.view.frame.size.width /2, self.view.frame.size.height/3.2);
+
+    }
+    if (self.view.frame.size.height == 568) {
+        //iphone 5
+        
+        
+    }
+    
+
    
 }
 
@@ -293,6 +313,20 @@
         else{
             
             if (self.moveSet == false) {
+                if (self.view.frame.size.height == 480) {
+                    self.tableview.frame = CGRectMake(self.tableview.frame.origin.x , self.tableview.frame.origin.y-18, self.tableview.frame.size.width, 308);
+                    self.buttonView.frame = CGRectMake(self.buttonView.frame.origin.x+2.5, self.buttonView.frame.origin.y - 4, self.buttonView.frame.size.width - 5, self.buttonView.frame.size.height - 6.5);
+                    self.textTop.center = CGPointMake(self.textTop.center.x+1.6, self.textTop.center.y-4.5);
+                    self.textBottom.center = CGPointMake(self.textBottom.center.x, self.textBottom.center.y-10);
+                    self.nextButton.center = CGPointMake(self.nextButton.center.x, self.nextButton.center.y-10);
+                    self.textTop.font = [UIFont fontWithName:@"Avenir-Light" size:self.textTop.font.pointSize-1];
+                    self.nextTitle.center = CGPointMake(self.nextTitle.center.x, self.nextTitle.center.y-10);
+                    
+                }
+                
+                
+                else
+                {
         
         self.tableview.frame = CGRectMake(self.tableview.frame.origin.x , self.tableview.frame.origin.y-10, self.tableview.frame.size.width, 368);
         self.buttonView.frame = CGRectMake(self.buttonView.frame.origin.x+2.5, self.buttonView.frame.origin.y - 4, self.buttonView.frame.size.width - 5, self.buttonView.frame.size.height - 6.5);
@@ -301,6 +335,7 @@
             self.nextButton.center = CGPointMake(self.nextButton.center.x, self.nextButton.center.y-10);
             self.textTop.font = [UIFont fontWithName:@"Avenir-Light" size:self.textTop.font.pointSize-1];
             self.nextTitle.center = CGPointMake(self.nextTitle.center.x, self.nextTitle.center.y-10);
+                }
             }
             
             

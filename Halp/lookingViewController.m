@@ -26,6 +26,9 @@
     SetMatch *match = [[SetMatch alloc]init];
     NSLog(@"%lu",(unsigned long)self.numbersChosen.count);
     self.finished = [match getMatches:[[PFUser currentUser]username] :self.numbersChosen :self.isLooking];
+     self.bigsmiley.frame = CGRectMake(1, 1, 100, 100);
+    self.bigsmiley.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/4);
+   
     
    
     self.spinningTimer = [NSTimer scheduledTimerWithTimeInterval:.0025 target:self selector:@selector(startSpinning) userInfo:nil repeats:YES];
@@ -70,8 +73,8 @@
         [self performSegueWithIdentifier:@"match" sender:self];
     }
     if (self.finished == 110) {
-        UIAlertView *mes=[[UIAlertView alloc] initWithTitle:@"OH NO!"
-                                                    message:@"Looks like no one is avaible right now, we'll let you know as soon as someone is!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        UIAlertView *mes=[[UIAlertView alloc] initWithTitle:@"Sorry!"
+                                                    message:@"Looks like no one is avaible right now, we'll let you know as soon as someone is!" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles: nil];
         UIImageView *smile = [[UIImageView alloc]initWithFrame:CGRectMake(10, 50, 32.2, 32.2)];
         smile.image = [UIImage imageNamed:@"smallsmileb"];
         smile.contentMode = UIViewContentModeScaleToFill;

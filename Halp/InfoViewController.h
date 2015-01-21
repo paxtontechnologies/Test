@@ -24,6 +24,7 @@
 - (IBAction)nextPushed:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *textTop;
 
+@property (strong, nonatomic) IBOutlet UIView *totalview;
 @property (strong, nonatomic) IBOutlet UILabel *textBottom;
 @property (strong, nonatomic) IBOutlet UIImageView *lookingText;
 @property (strong, nonatomic) IBOutlet UIImageView *HelpingText;

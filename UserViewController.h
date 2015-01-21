@@ -14,6 +14,7 @@
 - (IBAction)guyPressed:(id)sender;
 - (IBAction)girlPressed:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIView *fullView;
 @property(strong,nonatomic) NSTimer *timerup;
 @property(strong,nonatomic) NSTimer *timerside;
 

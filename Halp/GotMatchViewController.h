@@ -10,5 +10,6 @@
 
 @interface GotMatchViewController : UIViewController
 - (IBAction)talkTothem:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *totalviewController;
 
 @end

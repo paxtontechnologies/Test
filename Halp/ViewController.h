@@ -12,6 +12,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *helpButton;
 @property (strong, nonatomic) IBOutlet UIButton *lookbutton;
 @property (strong, nonatomic) IBOutlet UIImageView *spacerView;
+@property (strong, nonatomic) IBOutlet UIView *totalView;
 
 @property (strong, nonatomic) NSTimer *animateup;
 @property (strong, nonatomic) NSTimer *animateDown;

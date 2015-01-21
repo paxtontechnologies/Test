@@ -44,7 +44,7 @@
      @{NSForegroundColorAttributeName : [UIColor blackColor]}
                                            forState:UIControlStateSelected];
 
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
     
     return YES;
 }

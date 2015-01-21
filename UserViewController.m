@@ -16,6 +16,7 @@
 @implementation UserViewController
 
 - (void)viewDidLoad {
+    [self adjustForSize];
     [super viewDidLoad];
     [self Setnums];
     self.counter4 = 100;
@@ -204,5 +205,13 @@
         [self.counterTimer invalidate];
     }
     
+}
+-(void)adjustForSize{
+    
+   
+    
+    
+    self.fullView.center = CGPointMake(self.view.frame.size.width /2, self.view.frame.size.height/2);
+
 }
 @end

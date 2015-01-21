@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+  self.totalviewController.center =  CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
+
 }
 
 - (void)didReceiveMemoryWarning {
