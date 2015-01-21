@@ -34,7 +34,9 @@
     self.tableview.rowHeight = UITableViewAutomaticDimension;
     
     //self.tableview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Bg"]];
-     [self tableViewScrollToBottomAnimated];
+   
+        //[self tableViewScrollToBottomAnimated];
+     
     
     
     self.tabBarItem.selectedImage = [[UIImage imageNamed:@"chat"]
@@ -425,7 +427,6 @@
      self.height = 30;
     double heighted = 48;
     while ([[self.conversation objectAtIndex:index] length] > heighted) {
-        
         self.height  =self.height + 20;
         heighted = heighted + 50;
     }
