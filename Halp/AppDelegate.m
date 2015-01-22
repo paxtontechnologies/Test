@@ -22,8 +22,18 @@
                   clientKey:@"L2vdU2BiTcuqNvmFEzz0stBhvAZfK57WifAeGtkB"];
     [  PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-   
+   NSString *version = [[UIDevice currentDevice] systemVersion];
     // Register for Push Notitications
+    BOOL isAtLeast7 = [version compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending;
+    
+    if (isAtLeast7 == true) {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert |
+         UIRemoteNotificationTypeBadge |
+         UIRemoteNotificationTypeSound];
+    }
+    
+    else{
+    
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
                                                     UIUserNotificationTypeBadge |
                                                     UIUserNotificationTypeSound);
@@ -31,7 +41,8 @@
                                                                              categories:nil];
     [application registerUserNotificationSettings:settings];
    [application registerForRemoteNotifications];
-    
+    }
+  
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     
     // Add this code to change StateNormal text Color,

@@ -10,6 +10,28 @@
 
 @interface loginViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UILabel *circleWhite;
+@property (strong, nonatomic) IBOutlet UILabel *circleBlue;
+@property (strong, nonatomic) IBOutlet UIImageView *heart;
+
+
+
+
+
+@property(strong,nonatomic) NSTimer *whiteTimer;
+@property(nonatomic) int whiteCounter;
+
+@property(strong,nonatomic) NSTimer *blueTimer;
+@property(nonatomic) int blueCounter;
+
+@property(strong,nonatomic) NSTimer *heartTimer;
+@property(nonatomic) int heartCounter;
+
+@property(nonatomic) BOOL switch_off;
+@property(nonatomic) BOOL launch;
+@property(nonatomic) BOOL growing;
+
+@property(nonatomic) int random;
 
 
 @end

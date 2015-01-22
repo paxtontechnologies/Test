@@ -8,6 +8,7 @@
 
 #import "loginViewController.h"
 #import <Parse/Parse.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface loginViewController ()
 
@@ -17,10 +18,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loginuser];
+   // [self loginuser];
+    [self adjustCircles];
+    [self adjustCirclesBlue];
+    [self adjustheart];
     NSLog(@"%@",[[PFUser currentUser]username ]);
     // Do any additional setup after loading the view.
-}
+    self.whiteTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(whitecircleMovemnt) userInfo:nil repeats:YES];
+    
+    self.heartTimer = [NSTimer scheduledTimerWithTimeInterval:.001 target:self selector:@selector(heartMovemnet) userInfo:nil repeats:YES];
+    
+    self.random = arc4random() % 8;
+    self.random++;
+   }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -52,6 +62,9 @@
         [PFUser logInWithUsernameInBackground:[NSString stringWithFormat:@"%@",standardUserNumber] password:@"password" block:^(PFUser *user, NSError *error) {
             if (user) {
                 // Do stuff after successful login.
+                [self.whiteTimer invalidate];
+                [self.blueTimer invalidate];
+                [self.heartTimer invalidate];
                 [self performSegueWithIdentifier:@"login2" sender:self];
             } else {
                 // The login failed. Check error to see why.
@@ -81,8 +94,13 @@
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             // Hooray! Let them use the app now.
+           
             [[NSUserDefaults standardUserDefaults]setObject:@1 forKey:@"log"];
-            [self performSegueWithIdentifier:@"login" sender:self];
+            [self.whiteTimer invalidate];
+            [self.blueTimer invalidate];
+            [self.heartTimer invalidate];
+            [self performSegueWithIdentifier:@"login2" sender:self];
+            
               [[NSUserDefaults standardUserDefaults]setObject:usernumber forKey:@"User"];
             NSLog(@"USER Created");
         } else {
@@ -95,5 +113,133 @@
     
 }
 
+
+//setting up circles
+
+-(void)adjustCircles{
+    self.circleWhite.frame = CGRectMake(self.circleWhite.frame.origin.x, self.circleWhite.frame.origin.y , 30 , 30 );
+    self.circleWhite.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height/2);
+    self.circleWhite.layer.cornerRadius = self.circleWhite.frame.size.height/2;
+    
+    self.circleWhite.backgroundColor = [UIColor clearColor];
+   self.circleWhite.layer.masksToBounds=YES;
+    self.circleWhite.layer.borderColor=[[UIColor whiteColor]CGColor];
+    self.circleWhite.layer.borderWidth= 1.0f;
+    self.circleWhite.alpha = 1;
+    self.whiteCounter++;
+    
+ 
+    if (self.whiteCounter == self.random) {
+        [self loginuser];
+      
+    }
+    
+}
+
+-(void)adjustCirclesBlue{
+    self.circleBlue.frame = CGRectMake(self.circleBlue.frame.origin.x, self.circleBlue.frame.origin.y , 30 , 30 );
+    self.circleBlue.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height/2);
+    self.circleBlue.layer.cornerRadius = self.circleBlue.frame.size.height/2;
+    self.circleBlue.backgroundColor = [UIColor clearColor];
+    self.circleBlue.layer.masksToBounds=YES;
+    self.circleBlue.layer.borderColor=[[UIColor blackColor]CGColor];
+    self.circleBlue.layer.borderWidth= 2.0f;
+    self.circleBlue.alpha = 1;
+    
+}
+-(void)adjustheart{
+    self.heart.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height/2);
+    
+    
+}
+
+
+
+//timers
+
+-(void)whitecircleMovemnt{
+    self.circleWhite.frame = CGRectMake( self.circleWhite.frame.origin.x, self.circleWhite.frame.origin.y , self.circleWhite.frame.size.width + 2, self.circleWhite.frame.size.height + 2);
+    self.circleWhite.alpha = self.circleWhite.alpha - .01;
+self.circleWhite.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height/2);
+     self.circleWhite.layer.cornerRadius = self.circleWhite.frame.size.height/2;
+    NSLog(@"%f",self.circleWhite.alpha);
+    if ((self.circleWhite.alpha <= 0.75)&&(self.circleWhite.alpha >= 0.74)) {
+        
+            if (self.launch == false) {
+                [self adjustCirclesBlue];
+                self.blueTimer = [NSTimer scheduledTimerWithTimeInterval:.001 target:self selector:@selector(bluecircleMovement) userInfo:nil repeats:YES];
+                self.launch = true;
+            }
+            
+            
+    }
+    
+    if (self.circleWhite.alpha <=.01) {
+        [self adjustCircles];
+        self.heartCounter = 0;
+    }
+    
+}
+-(void)bluecircleMovement{
+    
+   
+    
+    if (self.circleBlue.alpha <= .50) {
+        
+        self.circleBlue.frame = CGRectMake( self.circleBlue.frame.origin.x, self.circleBlue.frame.origin.y , self.circleBlue.frame.size.width + 2, self.circleBlue.frame.size.height + 2);
+    }else{
+        
+         self.circleBlue.frame = CGRectMake( self.circleBlue.frame.origin.x, self.circleBlue.frame.origin.y , self.circleBlue.frame.size.width + 2, self.circleBlue.frame.size.height + 2);
+    }
+    
+    
+    self.circleBlue.alpha = self.circleBlue.alpha - .01;
+    self.circleBlue.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height/2);
+    self.circleBlue.layer.cornerRadius = self.circleBlue.frame.size.height/2;
+
+    
+    
+    if (self.circleBlue.alpha <=.01) {
+        [self.blueTimer invalidate];
+        self.launch = false;
+        
+    }
+
+}
+
+-(void)heartMovemnet{
+ 
+    NSLog(@"heart:%f,%f,%i",self.heart.frame.size.height,self.heart.frame.size.width,self.heartCounter);
+    
+    
+    if (self.heart.frame.size.height == 123) {
+        self.growing = true;
+        
+        
+    }else if (self.heart.frame.size.height == 100){
+        self.growing = false;
+        self.heartCounter++;
+    }
+    
+    
+    if (self.heartCounter >= 2) {
+        self.heartCounter++;
+        
+        
+        
+    }else{
+        
+        if (self.growing==false) {
+            
+            self.heart.frame = CGRectMake( self.heart.frame.origin.x, self.heart.frame.origin.y , self.heart.frame.size.width + .5, self.heart.frame.size.height + .5);
+        }else{
+            
+            self.heart.frame = CGRectMake( self.heart.frame.origin.x, self.heart.frame.origin.y , self.heart.frame.size.width - .5, self.heart.frame.size.height - .5);
+        }
+        
+    }
+
+     self.heart.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height/2);
+}
 
 @end

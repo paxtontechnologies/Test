@@ -172,10 +172,34 @@
                     <view key="view" contentMode="scaleToFill" id="534-2W-h0E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ie2-Cc-xZ2">
+                                <rect key="frame" x="145" y="269" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7hU-3Q-K75">
+                                <rect key="frame" x="145" y="162" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2901960784" green="0.82105004370000001" blue="0.70017482519999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Beating_heart" id="y8x-A1-AMi">
+                                <rect key="frame" x="110" y="371" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.29462662340000001" green="0.62509948019999995" blue="1" alpha="0.73999999999999999" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="sGn-Fb-6xr"/>
                     <connections>
+                        <outlet property="circleBlue" destination="7hU-3Q-K75" id="O7K-Hj-UJt"/>
+                        <outlet property="circleWhite" destination="ie2-Cc-xZ2" id="M0j-ta-k1e"/>
+                        <outlet property="heart" destination="y8x-A1-AMi" id="pmT-Z4-qVM"/>
                         <segue destination="vXZ-lx-hvc" kind="modal" identifier="login" modalTransitionStyle="crossDissolve" id="cmW-yL-Lvy"/>
                         <segue destination="mjp-4u-PyP" kind="modal" identifier="login2" modalTransitionStyle="crossDissolve" id="n4n-vT-TC0"/>
                     </connections>
@@ -524,6 +548,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Beating_heart" width="100" height="100"/>
         <image name="Chat" width="30" height="30"/>
         <image name="Helping" width="256" height="334"/>
         <image name="Line" width="220" height="1"/>

@@ -44,6 +44,8 @@
     
     self.tabBarItem.image = [[UIImage imageNamed:@"chat"]
                              imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.sendbutton.center = CGPointMake(self.view.frame.size.width - 28, self.sendbutton.center.y);
+    self.textfield.frame = CGRectMake(self.textfield.frame.origin.x, self.textfield.frame.origin.y, self.view.frame.size.width - 60, self.textfield.frame.size.height);
     
 }
 
@@ -55,7 +57,7 @@
         [[UIView appearanceWhenContainedIn:[UITabBar class], nil] setTintColor:[UIColor whiteColor]];
         [[UITabBar appearance] setSelectedImageTintColor:[UIColor blackColor]];
     
-
+    [self.tableview reloadData];
 }
 
 
@@ -115,7 +117,7 @@
            
                 text.text = [NSString stringWithFormat:@"%@",[self.conversation objectAtIndex:indexPath.row]];
            
-            text.frame = CGRectMake(320 - self.width, 1, self.width, self.height);
+            text.frame = CGRectMake(self.view.frame.size.width- self.width, 1, self.width, self.height);
             UIColor *color = [UIColor colorWithRed:116/255.0f green:167/255.0f blue:225/255.0f alpha:.31f];
             text.backgroundColor = color;
          text.textAlignment = NSTextAlignmentCenter;
@@ -194,8 +196,11 @@
   NSArray *hello = [query findObjects];
    self.conversation = [[NSMutableArray alloc]initWithArray:[[hello objectAtIndex:0]objectForKey:@"Conversation" ]copyItems:YES];
    self.side =[[NSMutableArray alloc]initWithArray:[[hello objectAtIndex:0]objectForKey:@"Sides"]copyItems:YES];
+    [self.tableview reloadData];
    
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableview reloadData];
+    });
 }
 - (NSString *)getSubstring:(NSString *)value betweenString:(NSString *)separator
 {
@@ -235,14 +240,26 @@
         //IPHONE 4/4S
         self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, 0, self.view.frame.size.width, 250);
         self.typingview.frame = CGRectMake(self.tableview.frame.origin.x, 180,self.typingview.frame.size.width, self.typingview.frame.size.height);
-    }else{
+        
+    }else if (self.view.bounds.size.width == 414){//6+
+        self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, 0, self.view.frame.size.width, 511);
+        self.typingview.frame = CGRectMake(self.tableview.frame.origin.x, 355,self.typingview.frame.size.width, self.typingview.frame.size.height);
+        
+    }
+    else if (self.view.bounds.size.width == 375){
+        //6
+        self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, 0, self.view.frame.size.width, 486);
+        self.typingview.frame = CGRectMake(self.tableview.frame.origin.x, 290,self.typingview.frame.size.width, self.typingview.frame.size.height);
+        
+    }
+    else{
         // for IPHONE 5/5S
     self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, 0, self.view.frame.size.width, 261);
         self.typingview.frame = CGRectMake(self.tableview.frame.origin.x, 205,self.typingview.frame.size.width, self.typingview.frame.size.height);
-    [self tableViewScrollToBottomAnimated];}
+    }
     NSLog(@"%f",self.typingview.frame.origin.y);
     
-    
+    [self tableViewScrollToBottomAnimated];
 }
 
 
@@ -409,27 +426,33 @@
 
 
 -(void)getlength :(int )index{
-    double number = [[self.conversation objectAtIndex:index] length];
-    if (number <= 3) {
-        number =  number * 13.954;
+    if (self.conversation.count > 0) {
+        double number = [[self.conversation objectAtIndex:index] length];
+        if (number <= 3) {
+            number =  number * 13.954;
+        }
+        else if (number <= 4) {
+            number =  number * 11.153848;
+            
+        }else{
+            number =  number * 8.153848;}
+        if (number > 290) {
+            self.width = 290;
+        }else{
+            self.width = number;}
     }
-    else if (number <= 4) {
-        number =  number * 11.153848;
-
-    }else{
-        number =  number * 8.153848;}
-    if (number > 290) {
-        self.width = 290;
-    }else{
-        self.width = number;}
+   
 }
 -(void)getheightforlabel :(int )index{
-     self.height = 30;
-    double heighted = 48;
-    while ([[self.conversation objectAtIndex:index] length] > heighted) {
-        self.height  =self.height + 20;
-        heighted = heighted + 50;
+    if (self.conversation.count > 0) {
+        self.height = 30;
+        double heighted = 48;
+        while ([[self.conversation objectAtIndex:index] length] > heighted) {
+            self.height  =self.height + 20;
+            heighted = heighted + 50;
+        }
     }
+    
    
 }
 

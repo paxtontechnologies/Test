@@ -294,7 +294,10 @@ self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, self.tableview.
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
    
-   
+    if (self.view.frame.size.height == 736) {
+        self.moveSet = true;
+        
+    }
     
     //5s & under on other devices just center everything.
     

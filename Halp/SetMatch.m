@@ -58,6 +58,7 @@
                 username =[[Matches objectAtIndex:0]objectForKey:@"User"];
                 [[NSUserDefaults standardUserDefaults]setValue:username forKey:@"matchup"];
                 NSLog(@"User: %@",username);
+                [[NSUserDefaults standardUserDefaults]setObject:username forKey:@"1"];
                 [[Matches objectAtIndex:0]deleteEventually];
                 return 100;
                 

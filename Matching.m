@@ -92,8 +92,8 @@
     NSString *newString =  [self getSubstring:stringone betweenString:@"."];
     NSString *newstring2 = [self getSubstring:stringtwo betweenString:@"."];
     
-    [[NSUserDefaults standardUserDefaults]setObject:newString forKey:@"1"];
-    [[NSUserDefaults standardUserDefaults]setObject:newstring2 forKey:@"2"];
+    [[NSUserDefaults standardUserDefaults]setObject:newString forKey:@"11"];
+    [[NSUserDefaults standardUserDefaults]setObject:newstring2 forKey:@"22"];
     if ([newString isEqual:[[PFUser currentUser]username]]) {
        
         return newString;
@@ -143,7 +143,7 @@
     
     
     NSString *firstname =[[NSUserDefaults standardUserDefaults]stringForKey:@"1"];
-    NSString *secondname =[[NSUserDefaults standardUserDefaults]stringForKey:@"2"];
+    NSString *secondname =[[PFUser currentUser]username];
  
     
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];

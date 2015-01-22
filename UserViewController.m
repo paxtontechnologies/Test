@@ -136,6 +136,9 @@
         
     }
     if (self.counter3 == 10) {
+        NSString *final =  [[PFUser currentUser]objectForKey:@"Karma"];
+        int finalNum = [final intValue];
+        self.counter4 = finalNum - 50;
         self.counterTimer = [NSTimer scheduledTimerWithTimeInterval:.05 target:self selector:@selector(numberTimer) userInfo:nil repeats:YES];
     }
     
