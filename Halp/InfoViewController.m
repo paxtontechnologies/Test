@@ -32,7 +32,7 @@
     [self changelayout];
     
     //creates names
-    self.array = [[NSMutableArray alloc]initWithObjects:@"Relationships", @"Family", @"Sexual",@"Drugs/Alchol",@"Other", nil];
+    self.array = [[NSMutableArray alloc]initWithObjects:@"Relationships", @"Family", @"Addiction",@"Drugs/Alcohol",@"Other", nil];
    //sets up for clicking the different categories
      [self setuparray];
     
@@ -262,7 +262,7 @@ self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, self.tableview.
     
     if (self.view.frame.size.width == 414) {
         //6 plus
-        self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, self.tableview.frame.origin.y, self.view.frame.size.width, 496);
+        self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, self.tableview.frame.origin.y, self.view.frame.size.width, 404);
         self.totalview.center = CGPointMake(self.view.frame.size.width /2, self.view.frame.size.height/4);
 
         

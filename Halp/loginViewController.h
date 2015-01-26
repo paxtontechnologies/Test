@@ -16,7 +16,7 @@
 
 
 
-
+-(void)loginuser;
 
 @property(strong,nonatomic) NSTimer *whiteTimer;
 @property(nonatomic) int whiteCounter;
@@ -26,10 +26,12 @@
 
 @property(strong,nonatomic) NSTimer *heartTimer;
 @property(nonatomic) int heartCounter;
+@property(nonatomic) double time;
 
 @property(nonatomic) BOOL switch_off;
 @property(nonatomic) BOOL launch;
 @property(nonatomic) BOOL growing;
+@property(nonatomic) BOOL growing2;
 
 @property(nonatomic) int random;
 

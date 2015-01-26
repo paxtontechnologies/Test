@@ -20,6 +20,7 @@
 		52916AA01A49F9590000BBDF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52916A9F1A49F9590000BBDF /* Images.xcassets */; };
 		52916AA31A49F9590000BBDF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52916AA11A49F9590000BBDF /* LaunchScreen.xib */; };
 		52916AAF1A49F9590000BBDF /* HalpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52916AAE1A49F9590000BBDF /* HalpTests.m */; };
+		52D35F831A74B2DB001C7E24 /* PVCPagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D35F821A74B2DB001C7E24 /* PVCPagesViewController.m */; };
 		52D5944E1A4B344300CC2C3F /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D5944D1A4B344300CC2C3F /* loginViewController.m */; };
 		52D594551A4B349B00CC2C3F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D594501A4B349B00CC2C3F /* Bolts.framework */; };
 		52D594561A4B349B00CC2C3F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D594511A4B349B00CC2C3F /* Parse.framework */; };
@@ -35,7 +36,6 @@
 		52D594671A4B34F400CC2C3F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D594661A4B34F400CC2C3F /* QuartzCore.framework */; };
 		52D594691A4B34F900CC2C3F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D594681A4B34F900CC2C3F /* Security.framework */; };
 		52D5946B1A4B34FD00CC2C3F /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D5946A1A4B34FD00CC2C3F /* Social.framework */; };
-		52D5946D1A4B350200CC2C3F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D5946C1A4B350200CC2C3F /* StoreKit.framework */; };
 		52D5946F1A4B350A00CC2C3F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D5946E1A4B350A00CC2C3F /* SystemConfiguration.framework */; };
 		52D594711A4B351300CC2C3F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D594701A4B351300CC2C3F /* libz.dylib */; };
 		52D594731A4B351D00CC2C3F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D594721A4B351D00CC2C3F /* libsqlite3.dylib */; };
@@ -80,6 +80,8 @@
 		52916AA81A49F9590000BBDF /* HalpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HalpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52916AAD1A49F9590000BBDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52916AAE1A49F9590000BBDF /* HalpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HalpTests.m; sourceTree = "<group>"; };
+		52D35F811A74B2DB001C7E24 /* PVCPagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVCPagesViewController.h; sourceTree = "<group>"; };
+		52D35F821A74B2DB001C7E24 /* PVCPagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVCPagesViewController.m; sourceTree = "<group>"; };
 		52D5944C1A4B344300CC2C3F /* loginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loginViewController.h; sourceTree = "<group>"; };
 		52D5944D1A4B344300CC2C3F /* loginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loginViewController.m; sourceTree = "<group>"; };
 		52D594501A4B349B00CC2C3F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -96,7 +98,6 @@
 		52D594661A4B34F400CC2C3F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		52D594681A4B34F900CC2C3F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		52D5946A1A4B34FD00CC2C3F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		52D5946C1A4B350200CC2C3F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		52D5946E1A4B350A00CC2C3F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		52D594701A4B351300CC2C3F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		52D594721A4B351D00CC2C3F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -115,7 +116,6 @@
 				52D594731A4B351D00CC2C3F /* libsqlite3.dylib in Frameworks */,
 				52D594711A4B351300CC2C3F /* libz.dylib in Frameworks */,
 				52D5946F1A4B350A00CC2C3F /* SystemConfiguration.framework in Frameworks */,
-				52D5946D1A4B350200CC2C3F /* StoreKit.framework in Frameworks */,
 				52D5946B1A4B34FD00CC2C3F /* Social.framework in Frameworks */,
 				52D594691A4B34F900CC2C3F /* Security.framework in Frameworks */,
 				52D594671A4B34F400CC2C3F /* QuartzCore.framework in Frameworks */,
@@ -157,6 +157,8 @@
 		52916A831A49F9580000BBDF = {
 			isa = PBXGroup;
 			children = (
+				52D35F811A74B2DB001C7E24 /* PVCPagesViewController.h */,
+				52D35F821A74B2DB001C7E24 /* PVCPagesViewController.m */,
 				52916A8E1A49F9590000BBDF /* Halp */,
 				52D5944F1A4B349B00CC2C3F /* parse-library-1.6.1 */,
 				52916AAB1A49F9590000BBDF /* HalpTests */,
@@ -196,6 +198,7 @@
 				525C5FFE1A50A536007842E1 /* UserViewController.h */,
 				525C5FFF1A50A536007842E1 /* UserViewController.m */,
 				525C5FFD1A4F14A0007842E1 /* Objects */,
+				52D35F791A74B15A001C7E24 /* StartingViews */,
 				52916A9F1A49F9590000BBDF /* Images.xcassets */,
 				52916AA11A49F9590000BBDF /* LaunchScreen.xib */,
 				52916A961A49F9590000BBDF /* Halp.xcdatamodeld */,
@@ -230,13 +233,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		52D35F791A74B15A001C7E24 /* StartingViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = StartingViews;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		52D5944F1A4B349B00CC2C3F /* parse-library-1.6.1 */ = {
 			isa = PBXGroup;
 			children = (
 				52D594721A4B351D00CC2C3F /* libsqlite3.dylib */,
 				52D594701A4B351300CC2C3F /* libz.dylib */,
 				52D5946E1A4B350A00CC2C3F /* SystemConfiguration.framework */,
-				52D5946C1A4B350200CC2C3F /* StoreKit.framework */,
 				52D5946A1A4B34FD00CC2C3F /* Social.framework */,
 				52D594681A4B34F900CC2C3F /* Security.framework */,
 				52D594661A4B34F400CC2C3F /* QuartzCore.framework */,
@@ -305,6 +315,11 @@
 					52916A8B1A49F9590000BBDF = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = 73G9MWFUKP;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					52916AA71A49F9590000BBDF = {
 						CreatedOnToolsVersion = 6.2;
@@ -366,6 +381,7 @@
 				52916A9B1A49F9590000BBDF /* ViewController.m in Sources */,
 				525C60001A50A536007842E1 /* UserViewController.m in Sources */,
 				52833B641A4A06DF0076B7FD /* InfoViewController.m in Sources */,
+				52D35F831A74B2DB001C7E24 /* PVCPagesViewController.m in Sources */,
 				52916A981A49F9590000BBDF /* Halp.xcdatamodeld in Sources */,
 				5219AED61A51C9BF00FE0A94 /* SetMatch.m in Sources */,
 				52D5947C1A4B6D5500CC2C3F /* ChatViewController.m in Sources */,
@@ -500,7 +516,7 @@
 				INFOPLIST_FILE = Halp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Halp;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -519,7 +535,7 @@
 				INFOPLIST_FILE = Halp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Halp;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -538,7 +554,7 @@
 				);
 				INFOPLIST_FILE = HalpTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HalpTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Halp.app/Halp";
 			};
 			name = Debug;
@@ -553,7 +569,7 @@
 				);
 				INFOPLIST_FILE = HalpTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HalpTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Halp.app/Halp";
 			};
 			name = Release;

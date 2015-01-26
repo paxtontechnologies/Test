@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+     self.tabBarController.tabBar.hidden = NO;
     
     UIImage *image = [UIImage imageNamed: @"logo.png"];
     UIImageView *imageview = [[UIImageView alloc] initWithImage: image];
@@ -26,11 +26,6 @@
     // set the text view to the image view
     self.navigationItem.titleView = imageview;
     
-    self.tabBarItem.selectedImage = [[UIImage imageNamed:@"plus"]
-                                     imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    self.tabBarItem.image = [[UIImage imageNamed:@"plus"]
-                             imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     self.totalView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
     if (self.view.frame.size.width == 414) {
@@ -40,6 +35,8 @@
         self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y+100, self.view.frame.size.width, self.tableView.frame.size.height+1000);}
     
     [self screenSize];
+    
+    
    
 }
 
@@ -48,8 +45,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)viewDidAppear:(BOOL)animated{
-    [[UIView appearanceWhenContainedIn:[UITabBar class], nil] setTintColor:[UIColor whiteColor]];
-    [[UITabBar appearance] setSelectedImageTintColor:[UIColor blackColor]];
+   
 }
 
 
@@ -66,7 +62,8 @@
 
 - (IBAction)HelpingButton:(id)sender {
     self.animateDown = [NSTimer scheduledTimerWithTimeInterval:.0003 target:self selector:@selector(animationdown) userInfo:nil repeats:YES];
-    [self slideTabbar];
+   // [self slideTabbar];
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 #pragma mark - timer functions
@@ -207,4 +204,7 @@
 }
 
 
+- (IBAction)back:(id)sender {
+   
+}
  @end

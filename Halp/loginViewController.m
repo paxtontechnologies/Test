@@ -18,19 +18,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   // [self loginuser];
+   
     [self adjustCircles];
     [self adjustCirclesBlue];
     [self adjustheart];
-    NSLog(@"%@",[[PFUser currentUser]username ]);
+    NSLog(@"Current User%@",[[PFUser currentUser]username ]);
+    
     // Do any additional setup after loading the view.
     self.whiteTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(whitecircleMovemnt) userInfo:nil repeats:YES];
+    self.time = .005;
+    self.heartTimer = [NSTimer scheduledTimerWithTimeInterval:self.time target:self selector:@selector(heartMovemnet) userInfo:nil repeats:YES];
     
-    self.heartTimer = [NSTimer scheduledTimerWithTimeInterval:.001 target:self selector:@selector(heartMovemnet) userInfo:nil repeats:YES];
+    self.circleBlue.hidden = YES;
+    self.circleWhite.hidden = YES;
     
-    self.random = arc4random() % 8;
-    self.random++;
+    self.random = arc4random() % 2;
+    
+    if (self.random == 0) {
+        self.random = 5;
+    }else{
+        self.random = 5;
+    }
    }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -62,10 +72,12 @@
         [PFUser logInWithUsernameInBackground:[NSString stringWithFormat:@"%@",standardUserNumber] password:@"password" block:^(PFUser *user, NSError *error) {
             if (user) {
                 // Do stuff after successful login.
+                self.growing2 = true;
                 [self.whiteTimer invalidate];
                 [self.blueTimer invalidate];
                 [self.heartTimer invalidate];
-                [self performSegueWithIdentifier:@"login2" sender:self];
+               
+                //[self performSegueWithIdentifier:@"login2" sender:self];
             } else {
                 // The login failed. Check error to see why.
                 NSLog(@"%@",[error userInfo][@"error"]);
@@ -94,12 +106,11 @@
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             // Hooray! Let them use the app now.
-           
+           self.growing2 = true;
             [[NSUserDefaults standardUserDefaults]setObject:@1 forKey:@"log"];
-            [self.whiteTimer invalidate];
-            [self.blueTimer invalidate];
+          //  [self.whiteTimer invalidate];
+//[self.blueTimer invalidate];
             [self.heartTimer invalidate];
-            [self performSegueWithIdentifier:@"login2" sender:self];
             
               [[NSUserDefaults standardUserDefaults]setObject:usernumber forKey:@"User"];
             NSLog(@"USER Created");
@@ -130,7 +141,10 @@
     
  
     if (self.whiteCounter == self.random) {
-        [self loginuser];
+        self.growing2 = true;
+        if (self.heart.frame.size.height >= self.view.frame.size.height) {
+            [self loginuser];
+        }
       
     }
     
@@ -211,6 +225,8 @@ self.circleWhite.center = CGPointMake(self.view.frame.size.width / 2, self.view.
  
     NSLog(@"heart:%f,%f,%i",self.heart.frame.size.height,self.heart.frame.size.width,self.heartCounter);
     
+    if (self.growing2 == false) {
+        
     
     if (self.heart.frame.size.height == 123) {
         self.growing = true;
@@ -238,7 +254,33 @@ self.circleWhite.center = CGPointMake(self.view.frame.size.width / 2, self.view.
         }
         
     }
-
+    }else {
+         if (self.view.bounds.size.width == 414){
+              self.heart.frame = CGRectMake( self.heart.frame.origin.x, self.heart.frame.origin.y , self.heart.frame.size.width + 55, self.heart.frame.size.height  + 55);
+         }else{
+        self.heart.frame = CGRectMake( self.heart.frame.origin.x, self.heart.frame.origin.y , self.heart.frame.size.width + 25, self.heart.frame.size.height  + 25);
+             self.time = .005;}
+    }
+    
+    
+    if (self.view.bounds.size.width == 414){
+        if (self.heart.frame.size.height - 1600 >= self.view.frame.size.height) {
+            [self.whiteTimer invalidate];
+            [self.blueTimer invalidate];
+            [self.heartTimer invalidate];
+            [self performSegueWithIdentifier:@"login2" sender:self];
+            
+        }
+    
+    }else{
+    
+    if (self.heart.frame.size.height - 1200 >= self.view.frame.size.height) {
+        [self.whiteTimer invalidate];
+        [self.blueTimer invalidate];
+        [self.heartTimer invalidate];
+        [self performSegueWithIdentifier:@"login2" sender:self];
+        
+    }}
      self.heart.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height/2);
 }
 

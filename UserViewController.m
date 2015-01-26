@@ -43,14 +43,7 @@
     self.othercounterView.center = CGPointMake(self.othercounterView.center.x -10, self.othercounterView.center.y);
     
     
-   
-
-    self.tabBarItem.selectedImage = [[UIImage imageNamed:@"smile"]
-                                     imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    self.tabBarItem.image = [[UIImage imageNamed:@"smile"]
-                             imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
+     
     
     self.heartimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(hearttimer) userInfo:nil repeats:YES];
     
@@ -61,8 +54,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)viewDidAppear:(BOOL)animated{
-    [[UIView appearanceWhenContainedIn:[UITabBar class], nil] setTintColor:[UIColor whiteColor]];
-    [[UITabBar appearance] setSelectedImageTintColor:[UIColor blackColor]];
+    
 }
 
 /*
@@ -160,12 +152,18 @@
     
 }
 
--(void)Setnums{ int number = arc4random() % 3;
+-(void)Setnums{
+    
+    int number = arc4random() % 3;
     number++;
     self.number.text = [NSString stringWithFormat:@"%@",[[PFUser currentUser]objectForKey:@"Counter"]];
     self.rankamountfriendsnum.text = [NSString stringWithFormat:@"%i",number];
-    self.overallkarmnumber.text = [NSString stringWithFormat:@"%i",[self queryforRank]];
- 
+        self.overallkarmnumber.text = [NSString stringWithFormat:@"%i",[self queryforRank]];
+    
+if ([self.OverallKarm.text intValue] <=2) {
+    self.rankamountfriendsnum.text = @"1";
+}
+
 }
 -(int)queryforRank{
     
@@ -194,7 +192,7 @@
 }
 
 -(void)numberTimer{
-      NSString *final =  [[PFUser currentUser]objectForKey:@"Karma"];
+    NSString *final =  [[PFUser currentUser]objectForKey:@"Karma"];
     int finalNum = [final intValue];
     
     if (self.counter4 <= finalNum) {

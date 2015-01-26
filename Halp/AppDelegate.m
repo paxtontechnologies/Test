@@ -24,10 +24,9 @@
     
    NSString *version = [[UIDevice currentDevice] systemVersion];
     // Register for Push Notitications
-    BOOL isAtLeast7 = [version compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending;
-    
-    if (isAtLeast7 == true) {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert |
+    if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
+        // ...
+            [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert |
          UIRemoteNotificationTypeBadge |
          UIRemoteNotificationTypeSound];
     }
@@ -43,19 +42,8 @@
    [application registerForRemoteNotifications];
     }
   
-    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
-    
-    // Add this code to change StateNormal text Color,
-    [UITabBarItem.appearance setTitleTextAttributes:
-     @{NSForegroundColorAttributeName : [UIColor blackColor]}
-                                           forState:UIControlStateNormal];
-    
-    // then if StateSelected should be different, you should add this code
-    [UITabBarItem.appearance setTitleTextAttributes:
-     @{NSForegroundColorAttributeName : [UIColor blackColor]}
-                                           forState:UIControlStateSelected];
-
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
+   
+   
     
     return YES;
 }

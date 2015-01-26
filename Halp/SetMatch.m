@@ -50,15 +50,21 @@
             if (![[[Matches objectAtIndex:x] objectForKey:@"Looking"] isEqualToNumber:opositeNumber]) {
                 // if its equal
                 NSLog(@"ere");
+                
+              
+                
                 [self upload:chosenNumbers :islooking];
                 
                 return 110;
             } else{
                 
+                [[NSUserDefaults standardUserDefaults]setObject:islooking forKey:@"matchlooking"];
+                [[NSUserDefaults standardUserDefaults]setObject:chosenOption forKey:@"chosenoption"];
                 username =[[Matches objectAtIndex:0]objectForKey:@"User"];
                 [[NSUserDefaults standardUserDefaults]setValue:username forKey:@"matchup"];
                 NSLog(@"User: %@",username);
                 [[NSUserDefaults standardUserDefaults]setObject:username forKey:@"1"];
+                
                 [[Matches objectAtIndex:0]deleteEventually];
                 return 100;
                 
@@ -104,6 +110,17 @@
     newConversation[@"Channel"] = [NSString stringWithFormat:@"%@.%@",[[PFUser currentUser]username],otherUser];
     NSArray *emptyarray = [[NSArray alloc]init];
     newConversation[@"Conversation"] = emptyarray;
+    
+    NSNumber *number = [[NSUserDefaults standardUserDefaults]objectForKey:@"matchlooking"];
+    if ([number  isEqual: @1]) {
+        newConversation[@"Looking"] = [[PFUser currentUser]username];
+    }else{
+        
+        newConversation[@"Looking"] = otherUser;
+    }
+    
+   newConversation[@"Topic"] = [[NSUserDefaults standardUserDefaults]objectForKey:@"chosenoption"];
+
     [newConversation saveEventually];
     Matching *matches = [[Matching alloc]init];
        [matches counter:[NSString stringWithFormat:@"%@.%@",[[PFUser currentUser]username],otherUser]];

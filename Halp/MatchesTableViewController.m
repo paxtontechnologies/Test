@@ -18,28 +18,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
+    
+    NSString *new = [[NSUserDefaults standardUserDefaults]stringForKey:@"Yes"];
+    if (new.length != 3) {
+        [self performSegueWithIdentifier:@"nu" sender:self];
+    }
+  
     SetMatch *matches = [[SetMatch alloc]init];
     self.Conversation = [[NSMutableArray alloc]initWithArray:[matches queryForUser]];
     [self.tableView reloadData];
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
+       self.tableView.tableFooterView = [[UIView alloc] init];
+    NSLog(@"Height %f",self.view.bounds.size.height);
     
-    NSLog(@"%f",self.view.frame.size.height);
     
-    
-    self.tabBarItem.selectedImage = [[UIImage imageNamed:@"Chat"]
-                                     imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    self.tabBarItem.image = [[UIImage imageNamed:@"Chat"]
-                             imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-   
-}
--(void)viewDidAppear:(BOOL)animated{
-    
-    [self.tableView reloadData];
-    [self viewDidLoad];
-    
-    if (self.view.frame.size.height == 603) {
+    if (self.view.bounds.size.height == 667.000000) {
         
         
         self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg6"]];
@@ -48,10 +43,28 @@
         
         self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Bg"]];}
     
-
-//        [[UIView appearanceWhenContainedIn:[UITabBar class], nil] setTintColor:[UIColor whiteColor]];
-//        [[UITabBar appearance] setSelectedImageTintColor:[UIColor blackColor]];
     
+    if ([[PFUser currentUser]objectForKey:@"Karma"]  == [NSNull null]) {
+        self.karma.title = @"100";
+    }else{
+        NSString *final =  [[PFUser currentUser]objectForKey:@"Karma"];
+        self.karma.title = [NSString stringWithFormat:@"%@",final];
+        
+    }
+    
+    
+}
+-(void)viewDidAppear:(BOOL)animated{
+ 
+    
+    
+    [self.tableView reloadData];
+
+    
+    
+
+    
+ 
 
 }
 
@@ -81,7 +94,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
     
    UIColor * color = [UIColor colorWithRed:115/255.0f green:227/255.0f blue:202/255.0f alpha:1.0f];
-    self.tableView.separatorColor = [UIColor clearColor];
+    
     
    
   // cell.separatorInset = UIEdgeInsetsZero;
@@ -96,13 +109,17 @@
     cell.textLabel.textAlignment = NSTextAlignmentNatural;
     
     long counter = [[[self.Conversation objectAtIndex:indexPath.row]objectForKey:@"Conversation"]count];
-    cell.textLabel.textColor = [UIColor grayColor];
+    cell.detailTextLabel.textColor = [UIColor grayColor];
     
     if (counter == 0) {
         cell.textLabel.text = @"New Conversation";
     }else{
         cell.textLabel.text = [[[self.Conversation objectAtIndex:indexPath.row]objectForKey:@"Conversation"]objectAtIndex:counter -1 ];}
     cell.accessoryView.backgroundColor = [UIColor clearColor];
+    
+    [self makelowerString:indexPath.row];
+    cell.detailTextLabel.text = [[NSUserDefaults standardUserDefaults]stringForKey:@"lower"];
+    NSLog(@"%@",[[NSUserDefaults standardUserDefaults]stringForKey:@"lower"]);
     
     return cell;
 }
@@ -205,8 +222,66 @@
         if (array.count > 0) {
             [[array objectAtIndex:0]deleteEventually];
             [self viewDidAppear:YES];
-            //[self.tableView reloadData];
+            [self.tableView reloadData];
         }
     }
 }
+- (IBAction)newconv:(id)sender {
+     [self.tabBarController setSelectedIndex:1];
+}
+
+- (IBAction)karma:(id)sender {
+    [self.tabBarController setSelectedIndex:2];
+
+}
+-(void)numberTimer{
+//    NSString *final =  [[PFUser currentUser]objectForKey:@"Karma"];
+//     self.karma.title = [NSString stringWithFormat:@"%i",self.counter4]
+//    int finalNum = [final intValue];
+//    
+//    if (self.counter4 <= finalNum) {
+//        self.karma.title = [NSString stringWithFormat:@"%i",self.counter4];
+//        self.counter4++;
+//    }else{
+//        self.counter4++;
+//    }
+//    
+//    if (self.counter4 > finalNum) {
+//        [self.counterTimer invalidate];
+//    }
+    
+}
+-(void)makelowerString :(float )indexpath{
+    NSString *totalString;
+    NSString *finalString;
+    NSString *looking = [[self.Conversation objectAtIndex:indexpath]objectForKey:@"Looking"];
+    NSLog(@"%@",looking);
+    if (looking.length > 0) {
+        
+        if ([looking isEqualToString:[[PFUser currentUser]username]]) {
+            totalString = @"Looking";
+            
+        }else{
+            totalString = @"Helping";
+        }
+        
+    }
+    NSNumber *number = [[self.Conversation objectAtIndex:indexpath]objectForKey:@"Topic"];
+    int numb = [number intValue];
+    NSString *nextString = @"";
+    if (numb == 0) {
+        nextString = @"Relationships";
+    }else if ( numb == 1){
+         nextString = @"Family";
+    }else if ( numb == 2){
+         nextString = @"Addiction";
+    }else if ( numb == 3){
+         nextString = @"Drugs/Alcohol";
+    }else if ( numb == 4){
+         nextString = @"Relationships";
+    }
+    finalString = [NSString stringWithFormat:@"%@ | %@",totalString,nextString];
+    [[NSUserDefaults standardUserDefaults]setObject:finalString forKey:@"lower"];
+}
+
 @end

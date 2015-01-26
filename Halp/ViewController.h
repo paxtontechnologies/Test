@@ -27,6 +27,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *lookingText;
 @property (strong, nonatomic) IBOutlet UILabel *helpingText;
 @property (strong, nonatomic) IBOutlet UILabel *tableView;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
+- (IBAction)back:(id)sender;
 
 @end
 

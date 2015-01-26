@@ -21,6 +21,7 @@
 @property(strong, nonatomic) NSTimer *movedown;
 @property(strong, nonatomic) NSTimer *Timer;
 
+@property(strong, nonatomic) NSTimer *TimerReshed;
 
 @property(strong, nonatomic) NSString *Channel;
 @property (nonatomic) BOOL shouldScrollToLastRow;
@@ -29,6 +30,7 @@
 @property(nonatomic)int counter1;
 @property(nonatomic)int counter2;
 @property(nonatomic)int duration;
+@property(nonatomic)int refres;
 @property(nonatomic)double seconds;
 
 @property(nonatomic)double width;

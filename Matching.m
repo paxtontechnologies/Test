@@ -72,8 +72,11 @@
     // only return Installations that belong to a User that
     // matches the innerQuery
     PFQuery *pushQuery = [PFInstallation query];
-    NSString *matching = [[self stringsTocheck:channel] substringFromIndex:1];
+    NSString *matching = [[self stringsTocheck2:channel] substringFromIndex:1];
+    matching  = [[NSUserDefaults standardUserDefaults]stringForKey:@"name2"];
     [pushQuery whereKey:@"User" equalTo:matching];
+    
+    NSLog(@"NOTIFCATION %@, %@",channel,matching);
     // Send the notification.
     NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
                           @"New Message", @"alert",
@@ -95,10 +98,11 @@
     [[NSUserDefaults standardUserDefaults]setObject:newString forKey:@"11"];
     [[NSUserDefaults standardUserDefaults]setObject:newstring2 forKey:@"22"];
     if ([newString isEqual:[[PFUser currentUser]username]]) {
-       
+       [[NSUserDefaults standardUserDefaults]setObject:newString forKey:@"name2"];
         return newString;
         
     }else{
+        [[NSUserDefaults standardUserDefaults]setObject:newstring2 forKey:@"name2"];
         
         return newstring2;
         
@@ -116,10 +120,13 @@
     [[NSUserDefaults standardUserDefaults]setObject:newstring2 forKey:@"2"];
     if ([newString isEqual:[[PFUser currentUser]username]]) {
         
+        [[NSUserDefaults standardUserDefaults]setObject:newstring2 forKey:@"name2"];
+
         return newstring2;
         
     }else{
-        
+        [[NSUserDefaults standardUserDefaults]setObject:newString forKey:@"name2"];
+
         return newString;
         
     }

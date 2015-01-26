@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.TimerReshed = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
     self.Channel = [[NSUserDefaults standardUserDefaults]stringForKey:@"Chat"];
     // Do any additional setup after loading the view.
     [self querychat];
@@ -35,7 +36,7 @@
     
     //self.tableview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Bg"]];
    
-        //[self tableViewScrollToBottomAnimated];
+        [self tableViewScrollToBottomAnimated];
      
     
     
@@ -46,7 +47,7 @@
                              imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.sendbutton.center = CGPointMake(self.view.frame.size.width - 28, self.sendbutton.center.y);
     self.textfield.frame = CGRectMake(self.textfield.frame.origin.x, self.textfield.frame.origin.y, self.view.frame.size.width - 60, self.textfield.frame.size.height);
-    
+       [self.tableview reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -176,7 +177,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
        [self.tableview reloadData];
     });
-    [self querychat];
+   // [self querychat];
     [self.tableview reloadData];
     [self tableViewScrollToBottomAnimated];
 }
@@ -236,10 +237,12 @@
     
 }
 -(void)movechattohalfway{
-    if (self.view.bounds.size.height == 480) {
+    
+    if (self.view.bounds.size.height == 416) {
+        NSLog(@"HER");
         //IPHONE 4/4S
-        self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, 0, self.view.frame.size.width, 250);
-        self.typingview.frame = CGRectMake(self.tableview.frame.origin.x, 180,self.typingview.frame.size.width, self.typingview.frame.size.height);
+        self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, 0, self.view.frame.size.width, 205);
+        self.typingview.frame = CGRectMake(self.tableview.frame.origin.x, 115,self.typingview.frame.size.width, self.typingview.frame.size.height);
         
     }else if (self.view.bounds.size.width == 414){//6+
         self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, 0, self.view.frame.size.width, 511);
@@ -260,6 +263,7 @@
     NSLog(@"%f",self.typingview.frame.origin.y);
     
     [self tableViewScrollToBottomAnimated];
+     NSLog(@"%f",self.view.frame.size.height);
 }
 
 
@@ -454,6 +458,23 @@
     }
     
    
+}
+-(void)refresh{
+    if (self.refres == 30) {
+        self.Channel = [[NSUserDefaults standardUserDefaults]stringForKey:@"Chat"];
+        // Do any additional setup after loading the view.
+        [self querychat];
+        [self.tableview reloadData];
+        self.refres = 0;
+        NSLog(@"reshresh");
+    }
+    
+   
+    
+    self.refres++;
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    [self.TimerReshed invalidate];
 }
 
 @end
